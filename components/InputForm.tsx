@@ -87,7 +87,7 @@ export default function InputForm({ onSubmit, loading }: InputFormProps) {
           id="bedriftsnavn"
           value={formData.bedriftsnavn}
           onChange={(e) => handleChange('bedriftsnavn', e.target.value)}
-          placeholder="F.eks. 'Fjellstad Elektriker' eller 'Jørgen Fjellstad'"
+          placeholder="F.eks. 'Elektriker Andersen' eller 'Konkurskameratene AS'"
           disabled={loading}
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
             errors.bedriftsnavn ? 'border-red-500' : 'border-gray-300'
