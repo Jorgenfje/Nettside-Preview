@@ -1,6 +1,7 @@
 {
   "name": "bedrift-preview",
   "version": "0.1.0",
+  "optionalDependencies": {},
   "private": true,
   "scripts": {
   "dev": "next dev",
