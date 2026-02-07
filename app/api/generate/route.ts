@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { genererNettside, validerAPInokkel } from '@/lib/claude';
+import { saveGeneratedWebsite } from '@/lib/database';
 import { BedriftsInfo } from '@/types';
 
 export async function POST(request: NextRequest) {
@@ -42,12 +43,18 @@ export async function POST(request: NextRequest) {
     console.log('Genererer nettside for:', bedriftsnavn);
     const html = await genererNettside({ bedriftsnavn, bransje, beskrivelse });
 
-    // Generer unik ID
-    const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    // Lagre i database
+    const { id, shortId } = await saveGeneratedWebsite(
+      bedriftsnavn,
+      bransje,
+      beskrivelse,
+      html
+    );
 
     return NextResponse.json({
       success: true,
       id,
+      shortId,
       html,
       bedriftsnavn
     });

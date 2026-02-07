@@ -8,6 +8,7 @@ import { BedriftsInfo } from '@/types';
 interface GeneratedResult {
   html: string;
   bedriftsnavn: string;
+  shortId?: string;
 }
 
 export default function Home() {
@@ -36,7 +37,8 @@ export default function Home() {
 
       setResult({
         html: result.html,
-        bedriftsnavn: result.bedriftsnavn
+        bedriftsnavn: result.bedriftsnavn,
+        shortId: result.shortId
       });
 
     } catch (err) {
@@ -223,6 +225,7 @@ export default function Home() {
           <WebsitePreview 
             html={result.html}
             bedriftsnavn={result.bedriftsnavn}
+            shortId={result.shortId}
             onReset={handleReset}
           />
         )}

@@ -190,7 +190,7 @@ export default function InputForm({ onSubmit, loading }: InputFormProps) {
         Genererer nettside...
       </span>
       <div className="w-full bg-gray-300 rounded-full h-2 overflow-hidden">
-        <div className="bg-white h-2 rounded-full animate-pulse" style={{width: '70%'}}></div>
+        <div className="bg-white h-2 rounded-full animate-pulse loading-bar"></div>
       </div>
       <p className="text-xs opacity-80">Dette tar vanligvis 20-40 sekunder</p>
     </div>

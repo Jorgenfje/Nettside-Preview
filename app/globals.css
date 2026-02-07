@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes loading {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.loading-bar {
+  animation: loading 40s linear;
+  width: 0%;
+}
