@@ -3,6 +3,8 @@ import { BedriftsInfo, Template } from '@/types';
 export function createWebsitePrompt(info: BedriftsInfo, template: Template): string {
   return `Du er en ekspert webutvikler som lager profesjonelle, moderne nettsider.
 
+VIKTIG: Returner KUN ren HTML-kode. Ingen forklaringer, ingen JSON-wrapper, ingen markdown-backticks. Start direkte med <!DOCTYPE html>.
+
 VIKTIG SPRÅKREGLER:
 - Hvis input er på norsk → generer HELE nettsiden på norsk
 - Hvis input er på engelsk → generer HELE nettsiden på engelsk
