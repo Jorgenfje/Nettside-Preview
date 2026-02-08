@@ -39,15 +39,24 @@ export async function genererNettside(info: BedriftsInfo): Promise<string> {
 
     let html = content.text;
 
-    // Fjern eventuelle markdown code blocks
-    html = html.replace(/```html\n?/g, '').replace(/```\n?/g, '');
+  // LEGG TIL LOGGING
+  console.log('Claude raw response (first 200 chars):', html.substring(0, 200));
 
-    // Valider at vi faktisk fikk HTML
-    if (!html.includes('<!DOCTYPE') && !html.includes('<html')) {
-      throw new Error('Generert innhold er ikke gyldig HTML');
-    }
+  // Fjern alt før <!DOCTYPE eller <html
+  if (html.indexOf('<!DOCTYPE') > 0) {
+    html = html.substring(html.indexOf('<!DOCTYPE'));
+  } else if (html.indexOf('<html') > 0) {
+    html = html.substring(html.indexOf('<html'));
+  }
 
-    return html.trim();
+console.log('After markdown removal (first 200 chars):', html.substring(0, 200));
+
+// Valider at vi faktisk fikk HTML
+if (!html.includes('<!DOCTYPE') && !html.includes('<html')) {
+  throw new Error('Generert innhold er ikke gyldig HTML');
+}
+
+return html.trim();
 
   } catch (error) {
     console.error('Feil ved generering av nettside:', error);
