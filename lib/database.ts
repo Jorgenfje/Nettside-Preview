@@ -1,7 +1,5 @@
 import { neon } from '@neondatabase/serverless';
 
-const sql = neon(process.env.DATABASE_URL!);
-
 // Funksjon for å generere kort ID (f.eks. "np-abc123")
 export function generateShortId(): string {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -19,6 +17,7 @@ export async function saveGeneratedWebsite(
   beskrivelse: string,
   html: string
 ) {
+  const sql = neon(process.env.DATABASE_URL!); // ← FLYTT HIT
   const shortId = generateShortId();
   
   const result = await sql`
@@ -32,6 +31,8 @@ export async function saveGeneratedWebsite(
 
 // Hent nettside basert på short_id
 export async function getWebsiteByShortId(shortId: string) {
+  const sql = neon(process.env.DATABASE_URL!); // ← OG HIT
+  
   const result = await sql`
     SELECT * FROM generated_websites WHERE short_id = ${shortId}
   `;
