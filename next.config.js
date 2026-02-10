@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
-    DATABASE_URL: process.env.DATABASE_URL,
-  },
+  // Disable static optimization for pages using env vars
+  output: 'standalone',
 }
 
 module.exports = nextConfig
