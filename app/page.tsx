@@ -78,7 +78,7 @@ export default function Home() {
               <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Se hvordan din bedrifts eller personlige nettside kan se ut.
                 <br className="hidden sm:block" />
-                <span className="font-semibold text-gray-700">Profesjonelt design, ingen teknisk kunnskap nødvendig.</span>
+                <span className="font-semibold text-gray-700"> Profesjonelt design, ingen teknisk kunnskap nødvendig.</span>
               </p>
             </div>
 
