@@ -69,9 +69,9 @@ export default function Home() {
               </div>
               
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                Din nettside –{' '}
+                Din nettside -{' '}
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  klar på under 1 minutt
+                  klar på 1 minutt
                 </span>
               </h1>
               
