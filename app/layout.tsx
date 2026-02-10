@@ -5,12 +5,12 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Nettside-Preview | Se din nettside på 30 sekunder',
-  description: 'Gratis forhåndsvisning av din bedrifts eller personlige nettside. AI-generert, profesjonelt design på under 30 sekunder.',
+  title: 'Nettside-Preview | Se din nettside på 1 minutt',
+  description: 'Gratis forhåndsvisning av din bedrifts eller personlige nettside. AI-generert, profesjonelt design på under 1 minutt.',
   keywords: ['nettside', 'preview', 'gratis', 'AI', 'webdesign', 'Norge'],
   authors: [{ name: 'Fjellstad Teknologi' }],
   openGraph: {
-    title: 'Nettside-Preview - Se din nettside på 30 sekunder',
+    title: 'Nettside-Preview - Se din nettside på under 1 minutt',
     description: 'Gratis AI-generert forhåndsvisning av din profesjonelle nettside',
     type: 'website',
   }
