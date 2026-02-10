@@ -90,7 +90,7 @@ export default function Home() {
                 </div>
                 <h3 className="font-bold text-lg text-gray-900 mb-2">Lynraskt</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  AI genererer en komplett nettside på under 30 sekunder
+                  AI genererer en komplett nettside på under 1 minutt
                 </p>
               </div>
 
