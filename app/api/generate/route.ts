@@ -5,27 +5,11 @@ import { BedriftsInfo } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
-    // DEBUG: Log alle env vars (masker verdier)
-    console.log('=== ENV VARS DEBUG ===');
-    console.log('ANTHROPIC_API_KEY exists:', !!process.env.ANTHROPIC_API_KEY);
-    console.log('ANTHROPIC_API_KEY length:', process.env.ANTHROPIC_API_KEY?.length || 0);
-    console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
-    console.log('NODE_ENV:', process.env.NODE_ENV);
-    console.log('All env keys:', Object.keys(process.env).filter(k => k.includes('ANTHROPIC') || k.includes('DATABASE')));
-    console.log('======================');
-
-    // Valider at API-nøkkel er satt (kun server-side sjekk)
+    // Valider at API-nøkkel er satt
     if (!process.env.ANTHROPIC_API_KEY) {
       console.error('ANTHROPIC_API_KEY mangler i environment variables');
       return NextResponse.json(
-        { 
-          error: 'Server konfigurasjonsfeil. Kontakt administrator.',
-          debug: {
-            hasKey: false,
-            nodeEnv: process.env.NODE_ENV,
-            availableKeys: Object.keys(process.env).filter(k => k.includes('ANTHROPIC') || k.includes('DATABASE'))
-          }
-        },
+        { error: 'Server konfigurasjonsfeil. Kontakt administrator.' },
         { status: 500 }
       );
     }
@@ -68,6 +52,8 @@ export async function POST(request: NextRequest) {
       html
     );
 
+    console.log('Nettside generert og lagret. Short ID:', shortId);
+
     return NextResponse.json({
       success: true,
       id,
@@ -92,11 +78,6 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   return NextResponse.json({ 
     status: 'ok',
-    apiKeyConfigured: !!process.env.ANTHROPIC_API_KEY,
-    debug: {
-      hasAnthropicKey: !!process.env.ANTHROPIC_API_KEY,
-      hasDatabaseUrl: !!process.env.DATABASE_URL,
-      nodeEnv: process.env.NODE_ENV
-    }
+    timestamp: new Date().toISOString()
   });
 }
