@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { genererNettside, validerAPInokkel } from '@/lib/claude';
+import { genererNettside } from '@/lib/claude';
 import { saveGeneratedWebsite } from '@/lib/database';
 import { BedriftsInfo } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
-    // Valider at API-nøkkel er satt
-    if (!validerAPInokkel()) {
+    // Valider at API-nøkkel er satt (kun server-side sjekk)
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('ANTHROPIC_API_KEY mangler i environment variables');
       return NextResponse.json(
-        { error: 'API-nøkkel mangler. Sjekk .env.local' },
+        { error: 'Server konfigurasjonsfeil. Kontakt administrator.' },
         { status: 500 }
       );
     }
@@ -75,6 +76,6 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   return NextResponse.json({ 
     status: 'ok',
-    apiKeyConfigured: validerAPInokkel()
+    apiKeyConfigured: !!process.env.ANTHROPIC_API_KEY
   });
 }

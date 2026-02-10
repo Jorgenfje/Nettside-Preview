@@ -3,12 +3,17 @@ import { BedriftsInfo } from '@/types';
 import { getTemplateForBransje } from './templates';
 import { createWebsitePrompt, createPersonligPrompt } from './prompts';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || '',
-});
-
 export async function genererNettside(info: BedriftsInfo): Promise<string> {
   try {
+    // Valider API key først
+    if (!process.env.ANTHROPIC_API_KEY) {
+      throw new Error('ANTHROPIC_API_KEY mangler i environment variables');
+    }
+
+    const anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    });
+
     // Velg riktig template basert på bransje
     const template = getTemplateForBransje(info.bransje);
     
@@ -39,24 +44,24 @@ export async function genererNettside(info: BedriftsInfo): Promise<string> {
 
     let html = content.text;
 
-  // LEGG TIL LOGGING
-  console.log('Claude raw response (first 200 chars):', html.substring(0, 200));
+    // LEGG TIL LOGGING
+    console.log('Claude raw response (first 200 chars):', html.substring(0, 200));
 
-  // Fjern alt før <!DOCTYPE eller <html
-  if (html.indexOf('<!DOCTYPE') > 0) {
-    html = html.substring(html.indexOf('<!DOCTYPE'));
-  } else if (html.indexOf('<html') > 0) {
-    html = html.substring(html.indexOf('<html'));
-  }
+    // Fjern alt før <!DOCTYPE eller <html
+    if (html.indexOf('<!DOCTYPE') > 0) {
+      html = html.substring(html.indexOf('<!DOCTYPE'));
+    } else if (html.indexOf('<html') > 0) {
+      html = html.substring(html.indexOf('<html'));
+    }
 
-console.log('After markdown removal (first 200 chars):', html.substring(0, 200));
+    console.log('After markdown removal (first 200 chars):', html.substring(0, 200));
 
-// Valider at vi faktisk fikk HTML
-if (!html.includes('<!DOCTYPE') && !html.includes('<html')) {
-  throw new Error('Generert innhold er ikke gyldig HTML');
-}
+    // Valider at vi faktisk fikk HTML
+    if (!html.includes('<!DOCTYPE') && !html.includes('<html')) {
+      throw new Error('Generert innhold er ikke gyldig HTML');
+    }
 
-return html.trim();
+    return html.trim();
 
   } catch (error) {
     console.error('Feil ved generering av nettside:', error);
@@ -67,10 +72,4 @@ return html.trim();
     
     throw new Error('Kunne ikke generere nettside. Prøv igjen.');
   }
-}
-
-// Hjelpefunksjon for å validere API-nøkkel
-export function validerAPInokkel(): boolean {
-  return !!process.env.ANTHROPIC_API_KEY && 
-         process.env.ANTHROPIC_API_KEY.length > 0;
 }
