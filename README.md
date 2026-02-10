@@ -1,54 +1,51 @@
 # Nettside-Preview
 
-AI-powered website preview generator that creates professional, responsive website mockups in 30 seconds. Live production application with full-stack architecture.
+AI-powered website generator that creates professional, responsive websites in under 1 minute. Live production application built with Next.js, Claude AI, and PostgreSQL.
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-4169E1) ![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7)
+![Next.js](https://img.shields.io/badge/Next.js-14-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-4169E1) ![Railway](https://img.shields.io/badge/Deploy-Railway-0B0D0E)
 
-🔗 **Live Application:** [sedinside.no](https://sedinside.no)
+🔗 **Live Demo:** [sedinside.no](https://sedinside.no)
 
-## Features
+## Overview
 
-- 🚀 **Instant Generation** - Professional website mockups in under 30 seconds
-- 🎨 **Smart Design** - AI selects templates and colors based on business type
-- 🌐 **Multi-language** - Auto-detects input language (Norwegian, English, German, etc.)
-- 📱 **Responsive Preview** - Desktop and mobile views
-- 💾 **Database Persistence** - Every generation stored with unique ID in PostgreSQL
-- 🔒 **Production Ready** - SSL, CDN, automated deployments
-- ⚡ **No Technical Knowledge Required** - Simple form interface
+A full-stack web application that generates complete, production-ready HTML websites using AI. Users fill out a simple form (business name, industry, description), and the system generates a professionally designed, responsive website in 45-60 seconds.
 
 ## Tech Stack
 
 **Frontend**
-- Next.js 14 (App Router)
+- Next.js 14 (App Router, React Server Components)
 - TypeScript 5
 - Tailwind CSS v3
 - React 18
 
-**Backend & APIs**
+**Backend**
 - Next.js API Routes
-- Anthropic Claude API (Sonnet 4)
-- PostgreSQL (Neon serverless)
-- Neon Database Serverless SDK
+- Anthropic Claude API (Sonnet 4, 8000 tokens)
+- PostgreSQL (Neon serverless database)
+- `@neondatabase/serverless` driver
 
 **Infrastructure**
-- Netlify (hosting, CDN, SSL)
-- GitHub (version control)
-- CI/CD pipeline (automatic deployments)
+- Railway (hosting, automatic deployments)
+- GitHub (version control, CI/CD trigger)
+- Domeneshop (DNS management)
 
-## Getting Started
-```bash
-npm install --legacy-peer-deps
-```
+## Key Features
 
-Create `.env.local`:
-```
-ANTHROPIC_API_KEY=your_key_here
-DATABASE_URL=postgresql://user:pass@host/db
-```
+✅ **AI-Powered Generation** - Claude Sonnet 4 generates complete HTML/CSS/JS  
+✅ **Database Persistence** - Every website stored with unique ID in PostgreSQL  
+✅ **Smart Templates** - Industry-specific design templates and color palettes  
+✅ **Responsive Design** - Desktop and mobile preview modes  
+✅ **Production Ready** - SSL, custom domain, automated deployments  
 
-Run:
-```bash
-npm run dev
+## Architecture Flow
+```
+User Input → Form Validation → API Route → Claude AI (8000 tokens)
+                                    ↓
+                            PostgreSQL (Neon)
+                                    ↓
+                        Generated Website Preview
+                                    ↓
+                    GitHub Push → Railway CI/CD → Production
 ```
 
 ## Database Schema
@@ -66,60 +63,58 @@ CREATE TABLE generated_websites (
 CREATE INDEX idx_short_id ON generated_websites(short_id);
 ```
 
-## Architecture
-```
-User Input → Next.js Form → API Route → Claude AI → PostgreSQL → Preview
-                                ↓
-                        GitHub Push → Netlify CI/CD → Production
-```
-
 ## Project Structure
 ```
 app/
-├── api/
-│   └── generate/
-│       └── route.ts       # API endpoint (Claude + Database)
-├── page.tsx               # Landing page with state management
-├── layout.tsx             # Root layout
-└── globals.css            # Tailwind configuration
+├── api/generate/route.ts     # API endpoint (Claude + Database)
+├── page.tsx                  # Landing page
 components/
-├── InputForm.tsx          # User input with validation
-└── WebsitePreview.tsx     # Preview display with desktop/mobile toggle
+├── InputForm.tsx             # Form with validation
+└── WebsitePreview.tsx        # Desktop/mobile preview
 lib/
-├── claude.ts              # Claude API integration
-├── database.ts            # PostgreSQL client (Neon)
-├── templates.ts           # Design templates & color palettes
-└── prompts.ts             # AI prompts for website generation
-types/
-└── index.ts               # TypeScript interfaces
+├── claude.ts                 # Claude API integration
+├── database.ts               # PostgreSQL client
+├── templates.ts              # Design templates
+└── prompts.ts                # AI prompts
 ```
 
-## Key Technical Features
+## Technical Highlights
 
-- **Full-stack TypeScript** - Type safety across frontend and backend
-- **Server-side rendering** - Next.js App Router with React Server Components
-- **AI integration** - Anthropic Claude Sonnet 4 for dynamic HTML generation
-- **Database integration** - PostgreSQL with Neon's edge-compatible serverless driver
-- **Automated CI/CD** - GitHub to Netlify deployment pipeline
-- **Responsive design** - Mobile-first approach with Tailwind CSS
-- **Error handling** - Comprehensive validation and error management
-- **Security** - Environment variables, server-side API routes, SSL
+- **Full-stack TypeScript** - End-to-end type safety
+- **Server-side API** - Secure API key handling, no client exposure
+- **Edge-compatible database** - Neon serverless PostgreSQL with connection pooling
+- **Dynamic AI prompts** - Industry-specific template selection
+- **Error handling** - Comprehensive validation and logging
+- **CI/CD pipeline** - Automated GitHub → Railway deployments
+
+## Local Development
+```bash
+npm install --legacy-peer-deps
+```
+
+Create `.env.local`:
+```env
+ANTHROPIC_API_KEY=your_key_here
+DATABASE_URL=postgresql://user:pass@host/db
+```
+
+Run:
+```bash
+npm run dev
+```
 
 ## Skills Demonstrated
 
-✅ Full-stack web development (Next.js, React, TypeScript)  
-✅ Database design & integration (PostgreSQL, SQL)  
-✅ AI/LLM API integration (Claude API)  
-✅ Cloud infrastructure & deployment (Netlify, Neon)  
-✅ CI/CD pipelines (GitHub → Netlify)  
-✅ Modern CSS frameworks (Tailwind CSS)  
-✅ API design (RESTful endpoints)  
-✅ Version control (Git, GitHub)
-
-## License
-
-Proprietary © 2026 Fjellstad Teknologi
+- Full-stack development (Next.js, React, TypeScript)
+- Database design & integration (PostgreSQL, SQL)
+- AI/LLM API integration (Claude API)
+- Cloud infrastructure (Railway, Neon)
+- CI/CD automation
+- Modern CSS (Tailwind)
+- API design (RESTful)
+- Version control (Git/GitHub)
 
 ---
 
 **Developed by [Fjellstad Teknologi](https://fjellstadteknologi.no)**  
+**Contact:** [jf@fjellstadteknologi.no](mailto:jf@fjellstadteknologi.no)
