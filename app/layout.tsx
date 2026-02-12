@@ -7,7 +7,14 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'AI Nettside-Generator | Gratis Forhåndsvisning på 1 Minutt',
   description: 'Generer profesjonelle nettsider med AI på under 1 minutt. Gratis forhåndsvisning uten forpliktelser. Moderne design tilpasset din bransje.',
-  keywords: ['AI nettside', 'nettside generator', 'gratis forhåndsvisning', 'webdesign', 'Norge', 'AI webdesign'],
+  keywords: [
+  'AI nettside generator Norge',
+  'gratis nettside forhåndsvisning',
+  'AI webdesign norsk',
+  'nettside generator',
+  'automatisk nettside AI',
+  'AI website builder Norge',
+],
   authors: [{ name: 'Fjellstad Teknologi' }],
   openGraph: {
     title: 'AI Nettside-Generator | Gratis Forhåndsvisning',
