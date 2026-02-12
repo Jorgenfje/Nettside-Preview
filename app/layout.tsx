@@ -5,15 +5,30 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Nettside-Preview | Se din nettside på 1 minutt',
-  description: 'Gratis forhåndsvisning av din bedrifts eller personlige nettside. AI-generert, profesjonelt design på under 1 minutt.',
-  keywords: ['nettside', 'preview', 'gratis', 'AI', 'webdesign', 'Norge'],
+  title: 'AI Nettside-Generator | Gratis Forhåndsvisning på 1 Minutt',
+  description: 'Generer profesjonelle nettsider med AI på under 1 minutt. Gratis forhåndsvisning uten forpliktelser. Moderne design tilpasset din bransje.',
+  keywords: ['AI nettside', 'nettside generator', 'gratis forhåndsvisning', 'webdesign', 'Norge', 'AI webdesign'],
   authors: [{ name: 'Fjellstad Teknologi' }],
   openGraph: {
-    title: 'Nettside-Preview - Se din nettside på under 1 minutt',
-    description: 'Gratis AI-generert forhåndsvisning av din profesjonelle nettside',
+    title: 'AI Nettside-Generator | Gratis Forhåndsvisning',
+    description: 'Få din profesjonelle nettside generert med AI på under 1 minutt. Helt gratis, ingen forpliktelser.',
     type: 'website',
-  }
+    url: 'https://sedinside.no',
+    images: [
+      {
+        url: 'https://sedinside.no/preview-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Nettside-Generator Preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Nettside-Generator | Gratis Forhåndsvisning',
+    description: 'Generer profesjonelle nettsider med AI på under 1 minutt.',
+    images: ['https://sedinside.no/preview-image.png'],
+  },
 };
 
 export default function RootLayout({
