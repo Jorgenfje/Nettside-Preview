@@ -117,4 +117,3 @@ npm run dev
 ---
 
 **Developed by [Fjellstad Teknologi](https://fjellstadteknologi.no)**  
-**Contact:** [jf@fjellstadteknologi.no](mailto:jf@fjellstadteknologi.no)
