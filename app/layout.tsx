@@ -45,6 +45,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="no">
+      <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4438798699459423" crossOrigin="anonymous"></script>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
