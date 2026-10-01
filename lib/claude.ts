@@ -26,8 +26,8 @@ export async function genererNettside(info: BedriftsInfo): Promise<string> {
       : createWebsitePrompt(info, template);
 
     const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 8000,
+      model: 'claude-sonnet-5-5',
+      max_tokens: 16000,
       messages: [
         {
           role: 'user',
@@ -37,8 +37,9 @@ export async function genererNettside(info: BedriftsInfo): Promise<string> {
     });
 
     // Ekstraher HTML fra responsen
-    const content = message.content[0];
-    if (content.type !== 'text') {
+    // Nyere modeller kan returnere thinking-blokker før teksten
+    const content = message.content.find((block) => block.type === 'text');
+    if (!content) {
       throw new Error('Uventet responstype fra Claude');
     }
 

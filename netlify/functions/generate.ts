@@ -29,16 +29,17 @@ export const handler: Handler = async (event) => {
 
     // Generer HTML med Claude (ingen timeout!)
     const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 8000,
+      model: 'claude-sonnet-5-5',
+      max_tokens: 16000,
       messages: [{
         role: 'user',
         content: `Du er en ekspert webutvikler. Lag en komplett, responsiv nettside for: ${bedriftsnavn} (${bransje}). ${beskrivelse}. Returner KUN ren HTML, start med <!DOCTYPE html>.`
       }]
     });
 
-    const content = message.content[0];
-    if (content.type !== 'text') {
+    // Nyere modeller kan returnere thinking-blokker før teksten
+    const content = message.content.find((block) => block.type === 'text');
+    if (!content) {
       throw new Error('Uventet responstype');
     }
 
