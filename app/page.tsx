@@ -232,16 +232,8 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="mt-20 pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-600">
-            Utviklet av{' '}
-            <a 
-              href="https://fjellstadteknologi.no" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-700 font-semibold hover:underline transition"
-            >
-              Fjellstad Teknologi
-            </a>
+          <p className="text-gray-500 text-sm">
+            © 2026 · Gratis og uforpliktende forhåndsvisning
           </p>
         </footer>
       </div>

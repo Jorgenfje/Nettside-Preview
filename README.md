@@ -113,7 +113,3 @@ npm run dev
 - Modern CSS (Tailwind)
 - API design (RESTful)
 - Version control (Git/GitHub)
-
----
-
-**Developed by [Fjellstad Teknologi](https://fjellstadteknologi.no)**  

@@ -142,22 +142,6 @@ export default function WebsitePreview({ html, bedriftsnavn, shortId, onReset }:
           🔗 Åpne i ny fane
         </button>
       </div>
-
-      {/* CTA */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">
-          Vil du ha denne nettsiden?
-        </h3>
-        <p className="text-gray-600 mb-4">
-          Jeg kan sette opp nettsiden din med eget domene, e-post og hosting.
-        </p>
-        <a
-          href="mailto:post@fjellstadteknologi.no?subject=Interessert i nettside&body=Hei! Jeg genererte en forhåndsvisning og vil gjerne ha hjelp til å få dette live."
-          className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
-        >
-          📧 Ta kontakt
-        </a>
-      </div>
     </div>
   );
 }

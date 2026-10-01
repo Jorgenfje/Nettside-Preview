@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   'automatisk nettside AI',
   'AI website builder Norge',
 ],
-  authors: [{ name: 'Fjellstad Teknologi' }],
   openGraph: {
     title: 'AI Nettside-Generator | Gratis Forhåndsvisning',
     description: 'Få din profesjonelle nettside generert med AI på under 1 minutt. Helt gratis, ingen forpliktelser.',
