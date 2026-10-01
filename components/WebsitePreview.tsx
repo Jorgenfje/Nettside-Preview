@@ -5,13 +5,12 @@ import { useState } from 'react';
 interface WebsitePreviewProps {
   html: string;
   bedriftsnavn: string;
-  shortId?: string;
   onReset: () => void;
 }
 
 type ViewMode = 'desktop' | 'mobile';
 
-export default function WebsitePreview({ html, bedriftsnavn, shortId, onReset }: WebsitePreviewProps) {
+export default function WebsitePreview({ html, bedriftsnavn, onReset }: WebsitePreviewProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('desktop');
 
   return (
@@ -25,13 +24,6 @@ export default function WebsitePreview({ html, bedriftsnavn, shortId, onReset }:
           <p className="text-gray-600 mt-1">
             Slik kan nettsiden din se ut
           </p>
-          {shortId && (
-            <p className="text-sm text-gray-500 mt-2">
-              <span className="font-semibold">Din ID:</span>{' '}
-              <code className="bg-gray-100 px-2 py-1 rounded">{shortId}</code>
-              {' '}(Oppgi denne ID-en når du kontakter oss)
-            </p>
-          )}
         </div>
         <button
           onClick={onReset}

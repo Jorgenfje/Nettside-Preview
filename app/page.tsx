@@ -225,7 +225,6 @@ export default function Home() {
           <WebsitePreview 
             html={result.html}
             bedriftsnavn={result.bedriftsnavn}
-            shortId={result.shortId}
             onReset={handleReset}
           />
         )}
